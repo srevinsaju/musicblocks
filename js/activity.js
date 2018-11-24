@@ -304,6 +304,8 @@ define(MYDEFINES, function (compatibility) {
 
             event.preventDefault();
             event.stopPropagation();
+	}, false);
+	/*
 
             blocks.stageClick = true;
 
@@ -335,6 +337,7 @@ define(MYDEFINES, function (compatibility) {
                 piemenuBlockContext(blocks.activeBlock, stageX, stageY);
             }
         }, false);
+        */
 
         // Calculate the palette colors.
         /*
