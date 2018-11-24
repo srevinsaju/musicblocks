@@ -1895,12 +1895,25 @@ function Block(protoblock, blocks, overrideName) {
 	    if ('nativeEvent' in event) {
 		console.log(event.nativeEvent);
 		if ('button' in event.nativeEvent && event.nativeEvent.button == 2) {
-		    console.log(event.nativeEvent.button);
+		    console.log('right click: ' + event.nativeEvent.button);
 		    that.piemenuBlockContext(thisBlock);
 		    return;
 		} else if ('ctrlKey' in event.nativeEvent && event.nativeEvent.ctrlKey) {
-		    console.log(event.nativeEvent.ctrlKey);
+		    console.log('ctrl click: ' + event.nativeEvent.ctrlKey);
 		    that.piemenuBlockContext(thisBlock);
+		    return;
+		} else if ('shiftKey' in event.nativeEvent && event.nativeEvent.shiftKey) {
+		    console.log('shift click: ' + event.nativeEvent.shiftKey);
+                    if (that.blocks.turtles.running()) {
+                        that.blocks.logo.doStopTurtle();
+			
+                        setTimeout(function () {
+                            that.blocks.logo.runLogoCommands(topBlock);
+                        }, 250);
+                    } else {
+                        that.blocks.logo.runLogoCommands(topBlock);
+                    }
+
 		    return;
 		}
 	    }
